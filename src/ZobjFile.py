@@ -1,12 +1,11 @@
 import re
 import ctypes
-import pprint
 
 class ZobjFile:
     def __init__(self, fileData, filename="untitled"):
         self.fileData = fileData
         self.displayLists = []
-        self.filename = "untitled"
+        self.filename = filename
 
         # Grab display lists
         for data in re.compile(
@@ -102,7 +101,7 @@ class ZobjFile:
 
 
 if __name__ == '__main__':
-    with open("object_gi_ki_tan_mask.zobj", 'rb') as fil:
-        zobj = ZobjFile(fil.read())
+    with open("modelTests/object_gi_ki_tan_mask.zobj", 'rb') as fil:
+        zobj = ZobjFile(fil.read(), "modelTests/object_gi_ki_tan_mask")
 
     zobj.createObj()
